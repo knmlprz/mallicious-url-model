@@ -23,3 +23,11 @@ class UrlData:
     protocol: str
     unicode_amount: int
     similar_unicode_amount: int
+    def __split_url(self) -> None:
+        """Splits given url to atomic parts"""
+        __protocol, _, domain = self.original_url.split("/")[:3]
+
+        # store only protocol and domain for further processing
+        self.protocol = __protocol[:-1]  # remove semicolon at the end of prot
+        self.domain = domain
+
