@@ -1,11 +1,8 @@
 import requests
 import os.path
 
-URL = 'https://hole.cert.pl/domains/domains.json'
-FILENAME = 'cert.json'
 
-
-def get_data(url=URL, force_download=False, filename=FILENAME):
+def get_data(url, filename, force_download=False):
     """
     Download data from url save it to file as text.
 
