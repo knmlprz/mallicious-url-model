@@ -59,3 +59,17 @@ class UrlData:
         self.protocol = __protocol[:-1]  # remove semicolon at the end of prot
         self.domain = domain
 
+
+    def __rm_unicode(self) -> None:
+        """Filters punycode strings and counts it"""
+        # Check if using Punycode
+        if "xn--" in domain:
+            layers = domain.split(".")
+            if "xn--" in layers[-2:]:
+                pass  # insert some penalty for using punycode
+
+        # TODO: do some function that counts amount of unicode characters
+        # after parsing punnycode
+        self.unicode_amount = 0
+        # TODO: list of similar characters from punycodes and ascii
+        self.similar_unicode_amount = 0
