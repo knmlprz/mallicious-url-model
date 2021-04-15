@@ -23,6 +23,20 @@ class UrlData:
     protocol: str
     unicode_amount: int
     similar_unicode_amount: int
+
+
+    def __init__(self, url: str):
+        """Constructs all the necessary data and cleans url to domain only
+        
+        Parameters
+        ----------
+        url : str
+            url to be sanitized and analyzed
+        """
+        __split_url()
+        __rm_unicode()
+        __rm_chars()
+
     def __rm_chars(self):
         """Removes unwanted characters such as dashes and underscores
         
