@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# PyCharm
+.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -102,7 +105,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.idea
 .env
 .venv
 env/
