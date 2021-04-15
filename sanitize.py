@@ -23,6 +23,20 @@ class UrlData:
     protocol: str
     unicode_amount: int
     similar_unicode_amount: int
+    def __rm_chars(self):
+        """Removes unwanted characters such as dashes and underscores
+        
+        Returns
+        -------
+            clean_url : str
+                URL after cleaning
+            removals_amount : int
+                Amount of removals
+        """
+        characters_to_remove = ["-", "_"]
+        # TODO: removals and count those
+
+        
     def __split_url(self) -> None:
         """Splits given url to atomic parts"""
         __protocol, _, domain = self.original_url.split("/")[:3]
