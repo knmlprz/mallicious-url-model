@@ -1,3 +1,5 @@
+"""Contains basic common used functions"""
+
 import requests
 import os.path
 
