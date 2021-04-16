@@ -18,7 +18,7 @@ def get_data(url, filename, force_download=False):
     Returns
     -------
     str
-        Text response (json format)
+        Text response
     """
 
     if force_download or not os.path.exists(filename):
