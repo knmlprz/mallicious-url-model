@@ -1,11 +1,13 @@
 """This module is used to handle data rom cert.pl
-Data is tagged
+Data from cert can be obtained in different forms (raw, tagged)
 """
 from utils import get_data
 
 
 class Cert:
     """
+    Handle data from cert
+
     Parameters
     ----------
     url : str
@@ -22,6 +24,18 @@ class Cert:
         self.filename = filename
 
     def get_raw(self, force_download=False):
+        """
+
+        Parameters
+        ----------
+        force_download : bool
+            Forces re-download of data
+
+        Returns
+        -------
+        str
+            Raw data from cert (format depends on url)
+        """
         return get_data(url=self.url,
                         filename=self.filename,
                         force_download=force_download)
