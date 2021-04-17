@@ -13,7 +13,7 @@ class Cert:
     Parameters
     ----------
     url : str
-        Url to cert data in TSV format
+        Url to cert data in json format
     filename : str
         Name of file to save raw cert data
 
@@ -42,14 +42,29 @@ class Cert:
                         filename=self.filename,
                         force_download=force_download)
 
-    def get_tagged_data(self, force_download=False):
+    def get_tagged_data(self, force_download=False) -> pd.DataFrame:
+        """
+
+        Parameters
+        ----------
+        force_download : bool
+
+
+        Returns
+        -------
+        pd.Dataframe
+            Dataframe with additional column (KnownDomainMatch)
+
+        """
         dt = pd.read_json(self.get_raw(force_download=force_download))
         domains = dt['DomainAddress']
         # Remove .pl .com etc from domains by splitting
+        # TODO: Find a better way to cut top-level domain
         known_domains = dataset_top_100_poland()['Domain'].str.split(".", n=1, expand=True)[0]
 
         dt["KnownDomainMatch"] = ""
 
+        # Sort known domains so that later, longest match will be the last saved
         known_domains = known_domains.sort_values(key=lambda x: x.str.len())
 
         for domain in domains:

@@ -8,7 +8,7 @@ import pandas as pd
 DATASET_TOP_100_POLSKA = "Data/top100-polska.csv"
 
 
-def dataset_top_100_poland(filename=DATASET_TOP_100_POLSKA):
+def dataset_top_100_poland(filename=DATASET_TOP_100_POLSKA) -> pd.DataFrame:
     """
 
     Parameters
