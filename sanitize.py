@@ -38,17 +38,10 @@ class UrlData:
         __rm_chars()
 
     def __rm_chars(self):
-        """Removes unwanted characters such as dashes and underscores
-        
-        Returns
-        -------
-            clean_url : str
-                URL after cleaning
-            removals_amount : int
-                Amount of removals
-        """
-        characters_to_remove = ["-", "_"]
+        """Removes unwanted characters such as dashes and underscores"""
+        translate_dict = {ord(c): None for c in "_-"}
         # TODO: removals and count those
+        self.sanitized_url = self.sanitized_url.translate(translate_dict)
 
         
     def __split_url(self) -> None:
@@ -70,6 +63,6 @@ class UrlData:
 
         # TODO: do some function that counts amount of unicode characters
         # after parsing punnycode
-        self.unicode_amount = 0
+        self.unicode_amount = 0  # this is temporary 
         # TODO: list of similar characters from punycodes and ascii
-        self.similar_unicode_amount = 0
+        self.similar_unicode_amount = 0  # this is temporary 
