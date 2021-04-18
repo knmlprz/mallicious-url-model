@@ -4,9 +4,9 @@ Classes
     UrlData
         Handles necessary info about inserted URL
 """
-from typing import Tuple
+from typing import Tuple, List
+import idna
 
-@dataclass
 class UrlData:
     """This dataclass contains all of the URL data
 
