@@ -56,17 +56,16 @@ class UrlData:
         # save subdomains in descending order
         self.subdomains = domain.split(".")[::-1]
 
-
-    def __rm_unicode(self) -> None:
+    def __rm_punycode(self) -> None:
         """Filters punycode strings and counts it"""
-        # Check if using Punycode
-        if "xn--" in domain:
-            layers = domain.split(".")
-            if "xn--" in layers[-2:]:
-                pass  # insert some penalty for using punycode
+        # Check which subdomain levels use punycodes
+        using_pc = [idna.decode(sub) if "xn--" in sub else sub
+                for sub in self.subdomains]
+        self.sanitized_url = ".".join(using_pc[::-1])
+        self.unicode_amount = [[True if ord(letter) > 127
+            else False for letter in sub].count(True)
+            for sub in using_pc]
 
-        # TODO: do some function that counts amount of unicode characters
-        # after parsing punnycode
-        self.unicode_amount = 0  # this is temporary 
+
         # TODO: list of similar characters from punycodes and ascii
         self.similar_unicode_amount = 0  # this is temporary 
