@@ -19,10 +19,10 @@ class UrlData:
     sanitized_url: str
     original_url: str
     removed_chars: int
-    domain: str
     protocol: str
-    unicode_amount: int
+    unicode_amount: List[int]
     similar_unicode_amount: int
+    subdomains: List[str]
 
 
     def __init__(self, url: str):
