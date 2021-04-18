@@ -42,7 +42,9 @@ class UrlData:
         """Removes unwanted characters such as dashes and underscores"""
         translate_dict = {ord(c): None for c in "_-"}
         # TODO: removals and count those
+        old = len(self.sanitized_url)
         self.sanitized_url = self.sanitized_url.translate(translate_dict)
+        self.removed_chars = old - len(self.sanitized_url)
 
         
     def __split_url(self) -> None:
