@@ -53,7 +53,8 @@ class UrlData:
 
         # store only protocol and domain for further processing
         self.protocol = __protocol[:-1]  # remove semicolon at the end of prot
-        self.domain = domain
+        # save subdomains in descending order
+        self.subdomains = domain.split(".")[::-1]
 
 
     def __rm_unicode(self) -> None:
