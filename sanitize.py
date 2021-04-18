@@ -33,9 +33,10 @@ class UrlData:
         url : str
             url to be sanitized and analyzed
         """
-        __split_url()
-        __rm_unicode()
-        __rm_chars()
+        self.original_url = url 
+        self.__split_url()
+        self.__rm_punycode()
+        self.__rm_chars()
 
     def __rm_chars(self):
         """Removes unwanted characters such as dashes and underscores"""
