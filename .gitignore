@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# PyCharm
+.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -127,3 +130,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/Data/URLs-mixed/mendeley_label1m.csv
+/Data/URLs-good/mendeley_label1m_good_clean.csv
+/Data/URLs-mixed/mendeley_label300k.csv
