@@ -69,3 +69,6 @@ class UrlData:
 
         # TODO: list of similar characters from punycodes and ascii
         self.similar_unicode_amount = 0  # this is temporary 
+
+    def get(self):
+        return [self.sanitized_url, self.removed_chars, self.protocol, sum(self.unicode_amount), self.similar_unicode_amount]
