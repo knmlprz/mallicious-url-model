@@ -1,6 +1,9 @@
 """This module is used to calculate Shannon entropy of objects"""
 import re
 from math import log2
+import math
+import numpy as np
+from typing import Optional
 
 # Propability of letter occuring in dataset
 # for more info check '/Notebooks/Entropy.ipynb'
@@ -57,13 +60,42 @@ prop_of_letters = {'g': 0.017823195816706855,
                    '$': 5.088810650444507e-06}
 
 # Filter all characters present in dictionary
-cleaner = re.compile(r"""[^a-z0-9/;,.\'\[\]@&%1#$*()\\]+""")
+# cleaner = re.compile(r"""[^a-z0-9/;,.\'\[\]@&%1#$*()\\]+""")
 
-def clean(test):
-    return cleaner.sub('', test)
+def entropy(x : np.array, p : Optional[dict] = None):
+    """
+    Calculates Shannon [1]_ entropy of x, where x is a vector of symbols (for example list of letters) and p is a dict
+    with probability of each symbol occurring. By default `p` (if `p` is `None`) is calculated based on x, as in [3]_,
+    otherwise `p` is used as probability [2]_.
 
-def entropy(text):
-    ent = 0.0
-    for letter in clean(text):
-        ent += prop_of_letters[letter] * log2(prop_of_letters[letter])
-    return ent
+    Parameters
+    ----------
+    x : numpy.array
+        Vector of symbols.
+    p : dict
+        Dict with probabilities of given symbols occurring.
+
+    Returns
+    -------
+    float
+        Entropy of x.
+
+    References
+    __________
+    [1] Shannon, “A Mathematical Theory of Communication.”
+
+    [2] Kaplan, "Shannon Entropy.", http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html
+
+    [3] fmark, "How do I compute approximate entropy of a string",
+        https://stackoverflow.com/questions/2979174/how-do-i-compute-the-approximate-entropy-of-a-bit-string
+    """
+
+    if p is None:
+        p = [float(np.sum(x == c)) / len(x) for c in dict.fromkeys(x)]
+
+    return - sum([prob * math.log(prob) / math.log(2.0) for prob in p])
+
+
+#print(entropy(np.array([l for l in "1212121222222111111"])))
+
+
