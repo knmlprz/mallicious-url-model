@@ -1,6 +1,4 @@
 """This module is used to calculate Shannon entropy of objects"""
-import re
-from math import log2
 import math
 import numpy as np
 from typing import Optional
@@ -59,10 +57,11 @@ prop_of_letters = {'g': 0.017823195816706855,
                    '*': 4.361837700381007e-06,
                    '$': 5.088810650444507e-06}
 
+
 # Filter all characters present in dictionary
 # cleaner = re.compile(r"""[^a-z0-9/;,.\'\[\]@&%1#$*()\\]+""")
 
-def entropy(x : np.array, p : Optional[dict] = None):
+def entropy(x: np.array, p: Optional[dict] = None):
     """
     Calculates Shannon [1]_ entropy of x, where x is a vector of symbols (for example list of letters) and p is a dict
     with probability of each symbol occurring. By default `p` (if `p` is `None`) is calculated based on x, as in [3]_,
@@ -73,12 +72,18 @@ def entropy(x : np.array, p : Optional[dict] = None):
     x : numpy.array
         Vector of symbols.
     p : dict
-        Dict with probabilities of given symbols occurring.
+        Dict with probability of each symbol occurring.
 
     Returns
     -------
     float
         Entropy of x.
+
+    Examples
+    --------
+    Fair coin toss:
+    >>> print(entropy(np.array([l for l in "12"])))
+    1
 
     References
     __________
@@ -95,7 +100,4 @@ def entropy(x : np.array, p : Optional[dict] = None):
 
     return - sum([prob * math.log(prob) / math.log(2.0) for prob in p])
 
-
-#print(entropy(np.array([l for l in "1212121222222111111"])))
-
-
+# print(entropy(np.array([l for l in "1212121222222111111"])))
