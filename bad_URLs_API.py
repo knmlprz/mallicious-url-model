@@ -61,7 +61,7 @@ class PhishTank(pd.DataFrame):
         Parameters
         ----------
             PhishTank_url : str
-                url address of the PhishTank API
+                url address of the JSON PhishTank API
         """
         df = pd.read_json(PhishTank_url)
         super().__init__(df)
