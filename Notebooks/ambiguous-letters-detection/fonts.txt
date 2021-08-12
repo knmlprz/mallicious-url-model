@@ -113,7 +113,6 @@ Onyx
 Palace Script MT
 Palatino Linotype
 Papyrus
-Parchment
 Perpetua
 Perpetua Titling MT
 Playbill
@@ -144,5 +143,4 @@ Unispace
 Verdana
 Viner Hand ITC
 Vivaldi
-Vladimir Script
 Wide Latin
