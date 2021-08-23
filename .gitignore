@@ -135,6 +135,5 @@ dmypy.json
 /Data/URLs-mixed/mendeley_label1m.csv
 /Data/URLs-good/mendeley_label1m_good_clean.csv
 /Data/URLs-mixed/mendeley_label300k.csv
-/Data/Letters/
 
 /Notebooks/ambiguous-letters-detection/training_data.npy
